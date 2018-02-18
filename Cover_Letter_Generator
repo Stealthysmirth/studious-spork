@@ -1,0 +1,82 @@
+from docx import Document
+
+import wikipediaapi
+
+wiki_wiki = wikipediaapi.Wikipedia('en')
+
+
+a = input("Full Name:")
+b = input("Your Address:")
+c = input("Your City/Town, Postcode:")
+d = input("Your Phone Number:")
+e = input("Your Email:")
+y = input("Degree title:")
+x = input("University:")
+q = input("Placement duration:")
+
+f = input("Name of Interviewer:")
+g = input("Interviewer Title:")
+h = input("Organization name:")
+i = input("Address:")
+j = input("City (of employer), Postcode:")
+
+page_py = wiki_wiki.page(h)
+"""
+What are you experienced in
+What are your key strengths
+Describe a time when you demonstrated leadership skills
+Describe a time when you worked in a group and   what was the outcome
+Describe your greatest achievement
+Describe your future aspirations
+Describe a time when you demonstrated exceptional team work
+What do you think you will add this company?  
+"""
+k = input("Job Title:")
+l = input("Where did you hear about the postion:")
+
+m = input("Describe your greatest achievement:")
+n = input("What skills do you have? Skill 1:")
+r = input("A time when you used Skill 1:")
+o = input("What skills do you have? Skill 2:")
+p = input("What skills do you have? Skill 3:")
+
+z = input("Available date for interview from [DD/MM/YYYY]:")
+
+a1 = ("I am writing to apply for the ",k, " postion advertised ", l,
+      ". I am a ", y," student studying at ", x, " and I’m aiming to "
+      "spend " ,q, " developing practical experience in industry to help advance my existing theory and make a real "
+      "difference to ", h,".")
+b1 = ("I was drawn to ",h, " since " "%s" % page_py.summary[0:500])
+b2 = (". This shows that " ,h, " is a highly innovative company that is constantly disrupting its market sector. I believe ", h,
+        " is the perfect place to develop while working alongside highly motivated teamates in a dynamic working environment.")
+c1 = ("I have great experience working with ",o,"as demonstrated by my " ,r,". I am proficient in ",n," and one of my proudest achievements was when I ",m,)
+d1 = ("I am available from ",z , " for interview, please find my CV attached.")
+e1 = ("I look forward to hearing from you.")
+f1 = ("Yours faithfully,")
+
+doc = Document()
+
+doc.add_heading('Cover Letter', 0)
+
+doc.add_paragraph(a)
+doc.add_paragraph(b)
+doc.add_paragraph(c)
+doc.add_paragraph(d)
+doc.add_paragraph(e)
+doc.add_paragraph()
+doc.add_paragraph(f)
+doc.add_paragraph(g)
+doc.add_paragraph(h)
+doc.add_paragraph(i)
+doc.add_paragraph(j)
+doc.add_paragraph()
+doc.add_paragraph("Dear Sir/Madam,")
+doc.add_paragraph(a1)
+doc.add_paragraph(b1 + b2)
+doc.add_paragraph(c1)
+doc.add_paragraph(d1)
+doc.add_paragraph(e1)
+doc.add_paragraph(f1)
+doc.add_paragraph(a)
+
+doc.save('testdoc12.docx')
